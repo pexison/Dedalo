@@ -1,1 +1,5 @@
+# Don't put garbage in the repo
 vim/undodir
+
+# Exclude symlinks
+vim/vim
