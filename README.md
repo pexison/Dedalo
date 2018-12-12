@@ -1,4 +1,9 @@
 # My dotfiles
+My Daily use configuration for:
+- zsh
+- tmux
+- vim
+
 ## Dependencies
 ### VIM
 - vim-plug (https://github.com/junegunn/vim-plug)
