@@ -7,6 +7,7 @@ DOTFILESREPO=~/Dedalo
 ############################################################################
 ln -sf $DOTFILESREPO/zsh/oh-my-zsh ~/.oh-my-zsh
 ln -sf $DOTFILESREPO/zsh/zshrc ~/.zshrc
+ln -sf $DOTFILESREPO/zsh/zshtheme ~/.zshtheme
 
 ############################################################################
 # Symlink tmux config
