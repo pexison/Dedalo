@@ -1,4 +1,5 @@
 " Depends: junegunn/vim-plug
+" Based on Manuel Gómez (targen@gmail.com) vimrc dotfile
 
 " Put plugins and dictionaries in this dir (also on Windows)
 let vimDir = '$HOME/.vim'
@@ -9,7 +10,6 @@ let &runtimepath.=','.vimDir
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
 
-Plug 'airblade/vim-gitgutter'
 Plug 'bling/vim-airline'
 
 set laststatus=2
@@ -31,17 +31,18 @@ au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
 Plug 'airblade/vim-gitgutter'
-Plug 'benmills/vimux'
+Plug 'benmills/vimux' " call VimuxPromptCommand('ls')
 Plug 'chrisbra/csv.vim'
 Plug 'daviddavis/vim-colorpack'
 Plug 'digitaltoad/vim-pug'
 Plug 'edkolev/tmuxline.vim'
-Plug 'edsono/vim-matchit'
 Plug 'godlygeek/tabular'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'jmcantrell/vim-virtualenv'
+Plug 'junegunn/fzf'
 Plug 'kchmck/vim-coffee-script'
 Plug 'lifepillar/pgsql.vim'
+Plug 'lokaltog/vim-powerline'
 Plug 'mhinz/vim-signify'
 Plug 'mhinz/vim-tmuxify'
 Plug 'mileszs/ack.vim'
@@ -50,14 +51,17 @@ Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'pbrisbin/html-template-syntax'
 Plug 'scrooloose/nerdcommenter'
-Plug 'terryma/vim-multiple-cursors'
+Plug 'scrooloose/syntastic'
+Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'vim-jp/cpp-vim'
-Plug 'lokaltog/vim-powerline'
-Plug 'scrooloose/syntastic'
+Plug 'w0rp/ale'
+
+let b:ale_linters = ['pyflakes', 'flake8', 'pylint']
 
 let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
@@ -72,12 +76,6 @@ let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#sources#syntax#min_keyword_length = 3
 
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-
-"autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-"autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-"autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-"autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-"autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 Plug 'mattn/webapi-vim'
 Plug 'mattn/gist-vim'
@@ -192,7 +190,7 @@ endif
 " Fn mappings
 map <F2>  :set cursorline!<CR>
 map <F3>  :set cursorcolumn!<CR>
-map <F4>  :call ToggleWhiteSpaceColor()<CR>
+map <F4>  :NERDTreeToggle()<CR>
 map <F5>  :set wrap!<CR>
 map <F6>  :if exists("g:syntax_on") <Bar> syntax off <Bar> else <Bar> syntax enable <Bar> endif<CR>
 map <F7>  :set scrollbind!<CR>
@@ -207,4 +205,3 @@ set fillchars+=stl:\ ,stlnc:\
 syntax on
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 filetype plugin indent on
-
