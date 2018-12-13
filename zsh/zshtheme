@@ -6,13 +6,15 @@ POWERLEVEL9K_MODE='awesome-fontconfig'
 POWERLEVEL9K_DISABLE_RPROMPT=true
 
 # Time settings
-POWERLEVEL9K_TIME_FORMAT="%D{%Y-%m-%dT%H:%M:%S}"
+#POWERLEVEL9K_TIME_FORMAT="%D{%Y-%m-%dT%H:%M:%S}"
+POWERLEVEL9K_TIME_FORMAT="%D{%H:%M:%S}"
 POWERLEVEL9K_TIME_FOREGROUND='244'
 POWERLEVEL9K_TIME_BACKGROUND='236'
 
 # Context settings
 POWERLEVEL9K_ALWAYS_SHOW_CONTEXT=true
-POWERLEVEL9K_CONTEXT_TEMPLATE="%n@`hostname -f`"
+#POWERLEVEL9K_CONTEXT_TEMPLATE="%n@`hostname -f`"
+POWERLEVEL9K_CONTEXT_TEMPLATE="%n 🐧"
 POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND='black'
 POWERLEVEL9K_CONTEXT_DEFAULT_BACKGROUND='251'
 
@@ -42,6 +44,6 @@ POWERLEVEL9K_CHANGESET_HASH_LENGTH=7
 
 # Set the prompt elements
 #POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(time history context status background_jobs dir vcs)
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(time history status background_jobs dir vcs)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(time context history status background_jobs dir vcs)
 
 #OPTIONAL: Search and change the icons used by status and vcs?
