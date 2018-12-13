@@ -41,6 +41,7 @@ POWERLEVEL9K_SHOW_CHANGESET=true
 POWERLEVEL9K_CHANGESET_HASH_LENGTH=7
 
 # Set the prompt elements
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(time history context status background_jobs dir vcs)
+#POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(time history context status background_jobs dir vcs)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(time history status background_jobs dir vcs)
 
 #OPTIONAL: Search and change the icons used by status and vcs?
