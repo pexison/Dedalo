@@ -1,5 +1,7 @@
 # Don't put garbage in the repo
 vim/undodir
+# Don't preload the pluggins for vim
+vim/plugged/*
 
 # Exclude symlinks
 vim/vim

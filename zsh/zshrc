@@ -6,9 +6,9 @@ DEFAULT_USER='john'
 DISABLE_AUTO_TITLE='false'
 COMPLETION_WAITING_DOTS='true'
 HIST_STAMPS='yyyy-mm-dd'
-ZSH_THEME="powerlevel9k/powerlevel9k"
-export UPDATE_ZSH_DAYS=13
-DISABLE_AUTO_UPDATE='true'
+#ZSH_THEME="powerlevel9k/powerlevel9k"
+#export UPDATE_ZSH_DAYS=13
+#DISABLE_AUTO_UPDATE='true'
 
 #########################################################################################
 # Zsh plugins
@@ -57,7 +57,9 @@ function source_if_exists() {
 source_if_exists "${HOME}/.gvm/scripts/gvm"
 source_if_exists "${HOME}/.rvm/scripts/rvm"
 source_if_exists "${ZSH}/oh-my-zsh.sh"
+source_if_exists "${HOME}/.zsh-custom-themes/powerlevel9k/powerlevel9k.zsh-theme"
 source_if_exists "${HOME}/.zshtheme"
+source_if_exists "${HOME}/.zshrcwork"
 
 #########################################################################################
 # Zsh options
@@ -331,6 +333,9 @@ command -v thefuck &>/dev/null && eval $(thefuck --alias)
 #########################################################################################
 # Automatically run tmux
 #########################################################################################
-if [[ ! $TERM =~ screen ]]; then
-    exec tmux
-fi
+#It causes performance issues
+
+#
+#if [[ ! $TERM =~ screen ]]; then
+#    exec tmux
+#fi
