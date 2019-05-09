@@ -14,7 +14,6 @@ HIST_STAMPS='yyyy-mm-dd'
 # Zsh plugins
 #########################################################################################
 plugins=(
-  colored-man
   colorize
   common-aliases
   compleat
@@ -59,6 +58,8 @@ source_if_exists "${HOME}/.rvm/scripts/rvm"
 source_if_exists "${ZSH}/oh-my-zsh.sh"
 source_if_exists "${HOME}/.zsh-custom-themes/powerlevel9k/powerlevel9k.zsh-theme"
 source_if_exists "${HOME}/.zshtheme"
+
+# Work configuration
 source_if_exists "${HOME}/.zshrcwork"
 
 #########################################################################################
@@ -320,10 +321,11 @@ alias delete='trash-put'
 alias recover='restore-trash'
 alias rm='delete'
 alias share-this='python -m SimpleHTTPServer 8000'
-alias do-backup='sudo rsnapshot -v alpha'
+alias do-backup='sudo rsnapshot -v beta'
 alias icons-hide='gsettings set org.gnome.desktop.background show-desktop-icons false'
 alias icons-show='gsettings set org.gnome.desktop.background show-desktop-icons true'
 alias show-folder-usage='du -hs * | sort -h'
+alias vagrant='env -u GEM_HOME -u GEM_PATH vagrant'
 
 #########################################################################################
 # Commands
@@ -331,11 +333,17 @@ alias show-folder-usage='du -hs * | sort -h'
 command -v thefuck &>/dev/null && eval $(thefuck --alias)
 
 #########################################################################################
-# Automatically run tmux
+# Functions
 #########################################################################################
-#It causes performance issues
 
-#
-#if [[ ! $TERM =~ screen ]]; then
-#    exec tmux
-#fi
+function start-if-not-started() {
+  for program in $@
+  do
+    if pgrep $program 1>/dev/null; then
+      echo "$program is already running"
+    else
+      echo "Starting $program in background" && exec $program&
+    fi
+  done
+
+}
