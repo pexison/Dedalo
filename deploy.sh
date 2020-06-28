@@ -2,7 +2,7 @@
 
 read -p "Insert location of the repository if it differs from default [~/Dedalo]: " -s dotfilesrepo
 
-if [ "$dotfilesrepo" = $'\n' ]; then
+if [ -z "$dotfilesrepo" ]; then
   dotfilesrepo=~/Dedalo
 fi;
 
@@ -22,6 +22,7 @@ sudo --stdin apt install zsh \
                  vim \
                  tmux \
                  trash-cli \
+                 silversearcher-ag \
                  fonts-powerline \
                  fonts-emojione \
                  fonts-noto-color-emoji

@@ -2,6 +2,7 @@
 # Don't leak information (security breach)
 vim/undodir
 # Don't preload the pluggins for vim
+vim/autoload/plug.vim
 vim/autoload
 vim/plugged
 # Exclude symlinks
