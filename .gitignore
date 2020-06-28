@@ -1,7 +1,12 @@
-# Don't put garbage in the repo
+# VIM
+# Don't leak information (security breach)
 vim/undodir
 # Don't preload the pluggins for vim
-vim/plugged/*
-
+vim/autoload
+vim/plugged
 # Exclude symlinks
 vim/vim
+
+# ZSH
+# Exclude themes symlink
+zsh/custom-themes/custom-themes
