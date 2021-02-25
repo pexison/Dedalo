@@ -1,3 +1,8 @@
+# Determine if the script is running under a Darwin distribution (mac in my case)
+if [[ $(uname -a | grep 'Darwin') ]]; then
+  DARWIN=true
+fi
+
 #########################################################################################
 # Zsh relevant environment variables
 #########################################################################################
@@ -317,15 +322,20 @@ export BC_LINE_LENGTH=0
 #########################################################################################
 alias pstree='pstree -pUSlaughs'
 alias grep='/usr/bin/ag'
+alias do-backup='sudo rsnapshot -v beta'
+alias show-folder-usage='du -hs * | sort -h'
+alias vagrant='env -u GEM_HOME -u GEM_PATH vagrant'
 alias delete='trash-put'
 alias recover='restore-trash'
 alias rm='delete'
-alias share-this='python -m SimpleHTTPServer 8000'
-alias do-backup='sudo rsnapshot -v beta'
-alias icons-hide='gsettings set org.gnome.desktop.background show-desktop-icons false'
-alias icons-show='gsettings set org.gnome.desktop.background show-desktop-icons true'
-alias show-folder-usage='du -hs * | sort -h'
-alias vagrant='env -u GEM_HOME -u GEM_PATH vagrant'
+
+if [[ -z "$DARWIN" ]]; then
+  alias share-this='python -m SimpleHTTPServer 8000'
+  alias icons-hide='gsettings set org.gnome.desktop.background show-desktop-icons false'
+  alias icons-show='gsettings set org.gnome.desktop.background show-desktop-icons true'
+else
+  alias fix-pcre='sudo chsh -s `command -v zsh` $USER'
+fi
 
 #########################################################################################
 # Commands
@@ -347,3 +357,11 @@ function start-if-not-started() {
   done
 
 }
+
+if [[ ! -z "$DARWIN" ]]; then
+  if type brew &>/dev/null; then
+    FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+    autoload -Uz compinit
+    compinit
+  fi
+fi
