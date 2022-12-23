@@ -17,7 +17,7 @@ fi
 # Determine if the script is running under a Darwin distribution (mac in my case)
 echo "Installing dependencies"
 if [[ ! $(uname -a | grep 'Darwin') ]]; then
-  printf "%s\n" "$uPassword" | sudo --stdin apt install zsh \
+  printf "%s\n" "$uPassword" | sudo --stdin apt install -y zsh \
                    gcc \
                    clang \
                    perl \
@@ -37,7 +37,7 @@ else
 fi
 
 echo "Changing default shell"
-sudo -S chsh -s $(which zsh) "$USER" <<< "$uPassword"
+printf "%s\n" "$uPassword"| chsh -s $(which zsh)
 echo ""
 
 echo "Creating symlinks"
