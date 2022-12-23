@@ -22,7 +22,6 @@ plugins=(
   colorize
   common-aliases
   compleat
-  copydir
   copyfile
   dircycle
   emoji
